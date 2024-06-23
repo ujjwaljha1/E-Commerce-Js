@@ -1,26 +1,45 @@
 import { Products } from "./db/product.js";
+import { createProductCard } from "./createProductCard.js";
+import { findProductInCart } from "./utils/findproductincart.js";
 
 const productContainer = document.getElementById("products");
 
-for (let product of Products) {
-  const cardContainer = document.createElement("div");
-  cardContainer.classList.add("card", "shadow");
-  cardContainer.innerHTML = `
-    <img src="${product.img}" alt="${product.alt}" />
-    <div class="info">
-      <h5>${product.name}</h5>
-      <p>${product.brand}</p>
-      <div class="pricing">
-        <p>Rs.</p>
-        <p class="old-price">${product.oldPrice}</p>
-        <p class="new-price">${product.newPrice}</p>
-        <p class="discount">(${product.discount}%)</p>
-      </div>
-      <div class="buy">
-        <button class="buy-button">Buy Now</button>
-        <span class="material-icons">shopping_bag</span>
-      </div>
-    </div>
-  `;
-  productContainer.appendChild(cardContainer);
-}
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const currentPage = window.location.pathname.includes('cart.html') ? 'cart' : 'home';
+
+productContainer.addEventListener("click", (event) => {
+  if (event.target.classList.contains("buy-button")) {
+    const productId = event.target.dataset.productId;
+
+    if (!findProductInCart(cart, productId)) {
+      const productToAddToCart = Products.filter(({ _id }) => _id === productId);
+
+      if (productToAddToCart.length > 0) {
+        cart = [...cart, ...productToAddToCart];
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        event.target.textContent = "Go To Cart";
+        event.target.addEventListener("click", () => {
+          window.location.href = "cart.html";
+        });
+      }
+    } else {
+      window.location.href = "cart.html";
+    }
+  } else if (event.target.classList.contains("remove-button")) {
+    const productId = event.target.dataset.productId;
+
+    cart = cart.filter(({ _id }) => _id !== productId);
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    const card = event.target.closest('.card');
+    card.parentNode.removeChild(card);
+
+    if (cart.length === 0 && currentPage === 'cart') {
+      productContainer.innerHTML = '<p>Your cart is empty.</p>';
+    }
+  }
+});
+
+createProductCard(Products, productContainer, findProductInCart, currentPage);
