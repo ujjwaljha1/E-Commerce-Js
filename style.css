@@ -1,0 +1,150 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background-color: #2874f0;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container img {
+    height: 50px;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+}
+
+.list ul {
+    display: flex;
+    list-style: none;
+}
+
+.list ul li {
+    margin: 0 15px;
+}
+
+.list ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.list button {
+    margin-left: 15px;
+    padding: 10px 20px;
+    border: none;
+    background-color: white;
+    color: #2874f0;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.list button:hover {
+    background-color: #e0e0e0;
+}
+
+#products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #f1f3f6;
+    padding: 10px;
+}
+
+.card {
+    background-color: #ffffff;
+    height: 29rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 15rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.info {
+    padding: 20px;
+    margin-left: 50px;
+}
+
+.info h5 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #212121;
+}
+
+.info p {
+    margin-bottom: 5px;
+    color: #616161;
+}
+
+.pricing p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.pricing p.old-price {
+    text-decoration: line-through;
+    color: #616161;
+}
+
+.pricing p.new-price {
+    color: #388e3c;
+}
+
+.pricing p.discount {
+    color: #1976d2;
+}
+
+.buy {
+    display: flex;
+    margin-top: 5px;
+    margin-right: 50px;
+}
+
+.buy-button {
+    color: white;
+    background-color: #2874f0;
+    width: 15rem;
+    padding: 10px 20px;
+    margin-right: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+    background-color: #1e63c8;
+}
+
+.material-icons:hover {
+    color: #1e63c8;
+}

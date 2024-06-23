@@ -1,5 +1,5 @@
 
-export const products = [
+export const Products = [
     {
       _id: "001",
       name: "Men Checked Shirt",
@@ -118,3 +118,4 @@ export const products = [
       rating: 2.2,
     },
   ];
+
