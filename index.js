@@ -11,9 +11,10 @@ for (let product of Products) {
       <h5>${product.name}</h5>
       <p>${product.brand}</p>
       <div class="pricing">
-        <p class="old-price">Old Price: ${product.oldPrice}</p>
-        <p class="new-price">New Price: ${product.newPrice}</p>
-        <p class="discount">Discount: ${product.discount}</p>
+        <p>Rs.</p>
+        <p class="old-price">${product.oldPrice}</p>
+        <p class="new-price">${product.newPrice}</p>
+        <p class="discount">(${product.discount}%)</p>
       </div>
       <div class="buy">
         <button class="buy-button">Buy Now</button>
